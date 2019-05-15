@@ -1,5 +1,6 @@
 function add(_numbers) {
     let separator = ','
+    let separators = []
     let numbers = _numbers
     let negativeNumbers = ''
 
@@ -9,13 +10,34 @@ function add(_numbers) {
     if (numbers.startsWith('//')) {
         const index = numbers.indexOf('\n')
 
-        if (index < 0) // out of pattern
-            return 0
+        if (index < 0)
+            throw new Error('Out of pattern')
+
         separator = numbers.substring(2, index)
+        separators = separator.split(',')
+
         numbers = numbers.substring(index)
     }
 
-    const filteredNumbers = numbers.replace('\n', '')
+    let filteredNumbers = numbers.replace('\n', '')
+    
+    if(separators.length == 0)
+        separators.push(separator)
+
+    separator = ','
+
+    
+
+    separators.map( sep => {
+        const toScape = [ '.','[','{','(',')','\\','^','$','|','?','*','+']
+        const toReplace = [ '\\.','\\[','\\{','\\(','\\)','\\','\\^','\\\$','\\|','\\?','\\*','\\+']
+        const index = toScape.indexOf(sep)        
+        
+        if( index > -1)
+            sep = toReplace[index]
+
+        filteredNumbers = filteredNumbers.replace(new RegExp(sep, 'gi'), separator)
+    })
 
     const values = filteredNumbers.split(separator)
 

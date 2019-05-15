@@ -65,4 +65,16 @@ describe('String Calculator tests', function(){
         const result = add('2,1001')
         assert.deepEqual(expected, result)
     })
+
+    it('sum array with multiples separators', function(){
+        const expected = 6
+        const result = add('//$,@\n1$2@3')
+        assert.deepEqual(expected, result)
+    })
+
+    it('sum array with multiples separators', function(){
+        const expected = 6
+        const result = add('//!!,@@\n1!!2@@3')
+        assert.deepEqual(expected, result)
+    })
 })
