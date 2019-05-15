@@ -19,4 +19,16 @@ describe('String Calculator tests', function(){
         const result = add(null)
         assert.deepEqual(expected, result)
     })
+
+    it('sum array with line feed case 1', function(){
+        const expected = 6
+        const result = add('1\n,2,3')
+        assert.deepEqual(expected, result)
+    })
+
+    it('sum array with line feed case 2', function(){
+        const expected = 7
+        const result = add('1,\n2,4')
+        assert.deepEqual(expected, result)
+    })
 })
