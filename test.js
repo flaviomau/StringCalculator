@@ -31,4 +31,22 @@ describe('String Calculator tests', function(){
         const result = add('1,\n2,4')
         assert.deepEqual(expected, result)
     })
+
+    it('sum array changing separator case 1', function(){
+        const expected = 8
+        const result = add('//;\n1;3;4')
+        assert.deepEqual(expected, result)
+    })
+
+    it('sum array changing separator case 2', function(){
+        const expected = 6
+        const result = add('//$\n1$2$3')
+        assert.deepEqual(expected, result)
+    })
+
+    it('sum array changing separator case 3', function(){
+        const expected = 13
+        const result = add('//@\n2@3@8')
+        assert.deepEqual(expected, result)
+    })
 })
