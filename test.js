@@ -53,4 +53,16 @@ describe('String Calculator tests', function(){
     it('sum array with negative value', function(){
         assert.throws(() => add('1,2,-3,-4'), Error)
     })
+
+    it('sum array with number equal to 1000', function(){
+        const expected = 1002
+        const result = add('2,1000')
+        assert.deepEqual(expected, result)
+    })
+
+    it('sum array with number larger than 1000', function(){
+        const expected = 2
+        const result = add('2,1001')
+        assert.deepEqual(expected, result)
+    })
 })

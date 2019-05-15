@@ -22,6 +22,8 @@ function add(_numbers) {
     const result = values.reduce((acc, value) => {
         if (value < 0)
             negativeNumbers = negativeNumbers.concat(',',value)
+        else if(value > 1000)
+            return parseInt(acc)
         else
             return parseInt(acc) + parseInt(value)                
     })
