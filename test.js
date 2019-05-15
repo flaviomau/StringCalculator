@@ -49,4 +49,8 @@ describe('String Calculator tests', function(){
         const result = add('//@\n2@3@8')
         assert.deepEqual(expected, result)
     })
+
+    it('sum array with negative value', function(){
+        assert.throws(() => add('1,2,-3,-4'), Error)
+    })
 })
